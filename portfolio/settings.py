@@ -25,9 +25,9 @@ BASE_DIR = Path(__file__).resolve(strict=True).parent.parent
 SECRET_KEY = 'nt8so9*o7d!*nbeok@qj1y)&*zim9y+-dh8(@@7mg&%4#)h-vk'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['webfolio-dresseur-de-code.herokuapp.com','127.0.0.1']
 
 
 # Application definition
