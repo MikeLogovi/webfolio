@@ -10,9 +10,10 @@
                 <h1>{{website.name}}</h1>
                 <div class="row website-crud-links">
                     <a href="{% url 'websites:create' %}" class="btn btn-success">Ajouter un site</a>
-                    <a href="{% url 'websites:edit' id=website.id %}" class="btn btn-warning">Mettre à jour ce site</a>
-                    <a href="{% url 'websites:delete' id=website.id %}" class="btn btn-danger">Supprimer ce site</a>
-        
+                    {%if request.user.id == website.developper.id%}
+                        <a href="{% url 'websites:edit' id=website.id %}" class="btn btn-warning">Mettre à jour ce site</a>
+                        <a href="{% url 'websites:delete' id=website.id %}" class="btn btn-danger">Supprimer ce site</a>
+                    {% endif %}
                 </div>
                 <div class="row">
                     <div class="col-md-4">
