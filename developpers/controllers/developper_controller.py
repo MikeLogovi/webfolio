@@ -29,7 +29,7 @@ def login_(request):
             user = authenticate(email =request.POST['email'],password=request.POST['password'])
             if user:
                 login(request,user)
-                if request.POST['next']:
+                if request.POST.get('next',0)!=0:
                     return redirect(request.POST['next'])
                 return redirect('home')
         return render(request,'developpers/login.html',{'form':form})
