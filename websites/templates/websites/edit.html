@@ -1,0 +1,38 @@
+{% extends 'layout/layout.html' %}
+{% block content %}
+    {% include  'layout/header.html' %}
+    <div class="container website-create text-center mb-1">
+        <h1>Mettez à jour  votre site web</h1>
+        <div class="row website-crud-links">
+            <a href="{% url 'websites:create' %}" class="btn btn-success">Ajouter un site</a>
+            <a href="{% url 'websites:delete' id=website.id %}" class="btn btn-danger">Supprimer ce site</a>
+
+        </div>
+        <div class="row">
+            <form action="{% url 'websites:edit' id=website.id %}" method="post" class="text-left">
+                {% csrf_token %}
+                {% for field in form %}
+                    {% if field.label == "Image"%}
+                    <div class="form-group">
+                        <h5 class="text-left">{{ field.label }}</h5>
+                    </div>           
+                        <div class="input-group">
+
+                            <div class="custom-file">
+                              <input type="file" class="custom-file-input" name="image" accept="image/*" id="inputGroupFile04" aria-describedby="inputGroupFileAddon04">
+                              <label class="custom-file-label" for="inputGroupFile04">Choose file</label>
+                            </div>
+                        </div>
+                    {% else %}
+                    <div class="form-group">
+                        <h5 class="text-left">{{ field.label }}</h5>
+
+                        {{ field }}
+                    </div>
+                    {% endif %}
+                {% endfor %}
+                <button class="btn btn-success mt-4 mb-3" type="submit">Envoyer</button>
+            </form>
+        </div>
+    </div>
+{% endblock %}

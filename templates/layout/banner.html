@@ -1,0 +1,27 @@
+{% load static %}
+<div class="banner">
+    <div class="container">
+        <nav class="nav">
+            <div class="navbar">
+                    <div class="nav-logo">
+                        <a href="{% url 'home' %}"><h2>Web<span>Folio</span></h2></a>
+                    </div>
+                    {% if request.user.is_authenticated %}
+                    <div class="nav-links">
+                        <a href="{% url 'developpers:logout' %}">Déconnexion</a>
+                    </div>
+                    {% else %}
+                        <div class="nav-links">
+                            <a href="{% url 'developpers:login' %}">Connexion</a>
+                            <a href="{% url 'developpers:register' %}">Inscription</a>
+                        </div>
+                    {% endif %}
+            </div>
+        </nav>
+    </div>
+    <div class="banner-content text-center">
+        <h1>WebFolio</h1>
+        <h2>Le portfolio mutualisé des sites web </h2>
+        <a href="{% url 'websites:create' %}" class="btn btn-success mt-2 boss">Ajoutez votre site</a>
+    </div>
+</div>

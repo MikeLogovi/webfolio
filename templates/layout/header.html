@@ -1,0 +1,19 @@
+<header class="header">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3">
+                <a class="logo" href="{% url 'home' %}"><h2>Web<span>Folio</span></h2></a>
+            </div>
+            {% if request.user.is_authenticated %}
+                <div class="col-md-3 offset-md-6 nav-links">
+                    <a href="{% url 'developpers:logout' %}">Déconnexion</a>
+                </div>
+            {% else %}
+                <div class="col-md-3 offset-md-6 nav-links">
+                    <a href="{% url 'developpers:login' %}">Connexion</a>
+                    <a href="{% url 'developpers:register' %}">Inscription</a>
+                </div>
+            {% endif %}
+        </div>
+    </div>
+</header>

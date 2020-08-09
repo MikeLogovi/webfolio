@@ -1,0 +1,30 @@
+{% extends 'layout/layout.html' %}
+{% block content %}
+    {% include "./layout/banner.html"%}
+    <div class="container text-center mt-5 mb-5">
+        <div class="text-left">
+            <h1 >Les sites web de webfolio</h1>
+            <a href="{% url 'websites:create'%}" class="btn btn-success btn-lg">Ajouter un site web</a>
+        </div>
+        <div class="content  index-list text-center">
+            <div class="row mt-5">
+                {% for website in websites%}
+                    <div class="col-md-3">
+                        <div class="card my-custom-card mb-2" >
+                            <img src="/media/{{ website.image }}" class="card-img-top" alt="...">
+                            <div class="card-body text-left">
+                                <h5 class="title">{{ website.title }}</h5>
+                                <h5 class="category">#{{ website.category.name}}</h5>
+                                <h5 class="author">Created by : {{ website.developper.username}}</h5>
+                                <a href="{% url 'websites:detail' slug=website.slug %}" class="btn btn-success">Lire plus</a>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+            <a  href="{% url 'websites:list' %}" class="btn btn-success mt-5">Tout voir</a>
+            
+            
+        </div>
+    </div>
+{% endblock %}

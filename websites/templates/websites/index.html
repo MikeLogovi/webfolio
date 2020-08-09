@@ -1,0 +1,23 @@
+{% extends 'layout/layout.html' %}
+{% block content %}
+    {% include 'layout/header.html' %}
+    <div class="container website-list mt-5 ">
+        <h1>Tous les sites web de disponible</h1>
+        <div class="row mt-5">
+            {% for website in websites%}
+                <div class="col-md-3">
+                    <div class="card my-custom-card mb-2" >
+                        <img src="/media/{{ website.image }}" class="card-img-top" alt="...">
+                        <div class="card-body">
+                        <h5 class="title">{{ website.title }}</h5>
+                        <h5 class="category">#{{ website.category.name}}</h5>
+                        <h5 class="author">Created by : {{ website.developper.username}}</h5>
+                        <a href="{% url 'websites:detail' slug=website.slug %}" class="btn btn-success">Lire plus</a>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+
+{% endblock %}
