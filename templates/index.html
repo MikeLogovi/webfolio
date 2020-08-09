@@ -11,7 +11,11 @@
                 {% for website in websites%}
                     <div class="col-md-3">
                         <div class="card my-custom-card mb-2" >
-                            <img src="/media/{{ website.image }}" class="card-img-top" alt="...">
+                            {% if website.image_url  %}
+                                 <img src="{{website.image_url}}" class="image" alt="image"/>
+                            {% else %}
+                                 <img src="/media/{{website.image}}" class="image" alt="image"/>
+                            {% endif %}
                             <div class="card-body text-left">
                                 <h5 class="title">{{ website.title }}</h5>
                                 <h5 class="category">#{{ website.category.name}}</h5>

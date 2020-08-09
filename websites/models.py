@@ -12,6 +12,8 @@ class Website(models.Model):
     slug = models.SlugField()
     description = models.TextField()
     image = models.FileField(blank=True,default="default.png")
+    image_url = models.URLField(blank=True,null=True)
+
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     developper = models.ForeignKey(Developper,default=None,on_delete=models.CASCADE)
